@@ -13,7 +13,7 @@ const nameSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(25, 'Too Long!')
     .required('Required'),
-  number: Yup.number().required('Required').integer(),
+  // number: Yup.number().required('Required').integer(), - No valid
 });
 
 export const ContactForm = props => {
@@ -33,12 +33,18 @@ export const ContactForm = props => {
         <Form>
           <EntryField>
             <FormLabel htmlFor="name">First Name</FormLabel>
-            <Field id="name" name="name" placeholder="Enter Name" />
+            <Field id="name" name="name" placeholder="Name" />
           </EntryField>
 
           <EntryField>
             <FormLabel htmlFor="number">Telephone</FormLabel>
-            <Field id="number" name="number" placeholder="Enter Telephone" />
+            <Field
+              id="number"
+              type="tel"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
+              name="number"
+              placeholder="xxx-xx-xx"
+            />
           </EntryField>
 
           <Button type="submit">Submit</Button>
